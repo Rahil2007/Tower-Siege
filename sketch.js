@@ -72,32 +72,23 @@ function setup() {
     density:0.1
 
   }
-  ball = Bodies.circle(50,200,20,options)
+  ball = Bodies.circle(150,100,20,options)
   World.add(world,ball)
-  slingShot = new SlingShot(this.ball,{x:100,y:100})
+  slingShot = new SlingShot(this.ball,{x:150,y:100})
 
 }
 function draw() {
-  background(200); 
+  background(220); 
   Engine.update(engine);
 
-  textSize(20);
+  push()
   fill("lightyellow");
-  
   ground.display();
   stand1.display();
   stand2.display();
-
+  pop()
   slingShot.display();
 
-
-  strokeWeight(2);
-  stroke(15);
-  
-  fill("white")
-  text("Drag the Hexagon And Hit The Boxes",300,50)
-
-  fill("skyblue");
   block1.display();
   block2.display();
   block3.display();
@@ -105,40 +96,29 @@ function draw() {
   block5.display();
   block6.display();
   block7.display();
-  fill("pink");
   block8.display();
   block9.display();
   block10.display();
   block11.display();
   block12.display();
-  fill("turquoise");
   block13.display();
   block14.display();
   block15.display();
-  fill("grey");
   block16.display();
-
-  fill("skyblue");
   block17.display();
   block18.display();
   block19.display();
   block20.display();
   block21.display();
   block22.display();
-
-  fill("pink");
   block23.display();
   block24.display();
   block25.display();
   block26.display();
   block27.display();
-
-  fill("turquoise");
   block28.display();
   block29.display();
   block30.display();
-
-  fill("grey");
   block31.display();
 
 
@@ -146,10 +126,13 @@ function draw() {
   imageMode(CENTER)
   image(polygon_img,ball.position.x,ball.position.y,40,40)
 
+  fill("white")
+  textSize(20);
+  text("Drag the Hexagon And Hit The Boxes",270,50)
+  text("Press The Spacebar To Get Another Chance",240,80)
 
 
-  drawSprites();
-
+ 
 }
 
 function mouseDragged(){
@@ -159,4 +142,10 @@ function mouseDragged(){
 
 function mouseReleased(){
   slingShot.fly();
+}
+
+function keyPressed(){
+  if(keyCode===32){
+    slingShot.attach(this.ball)
+  }
 }
